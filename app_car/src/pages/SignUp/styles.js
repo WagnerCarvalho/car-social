@@ -25,14 +25,6 @@ export const Input = styled.TextInput`
     padding: 10px;
 `
 
-export const Logo = styled.Image`
-    height: 150px;
-    width: 150px;
-    margin-bottom: 15px;
-    background-color: #fff;
-    border-radius: 10px;
-`
-
 export const SubmitButton = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
@@ -48,11 +40,19 @@ export const SubmitText = styled.Text`
     font-size: 18px;
 `
 
-export const SignUpLink = styled.TouchableOpacity`
+export const SignUpText = styled.Text`
+    margin-bottom: 15px;
+    color: #fff;
+    font-size: 25px;
+    font-weight: bold;
+`
+
+export const SignInButton = styled.TouchableOpacity`
     margin-top: 10px;
 `
 
-export const SignUpText = styled.Text`
+export const SignInText = styled.Text`
     color: #fff;
-    padding-bottom: 13px;
+    padding-bottom: 12px;
+    font-size: 15px;
 `

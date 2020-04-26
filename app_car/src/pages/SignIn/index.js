@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { View, Text } from 'react-native'
+import { Platform } from 'react-native'
 import { Background, Container, AreaInput, Input, Logo, SubmitButton, SubmitText, SignUpLink, SignUpText } from './styles'
 
-function SignIn() {
+function SignIn( {navigation} ) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -38,7 +38,7 @@ function SignIn() {
                     <SubmitText>Acessar</SubmitText>
                 </SubmitButton>
 
-                <SignUpLink onPress={()=>{}}>
+                <SignUpLink onPress={(navigate)=> navigation.navigate('SignUp') }>
                     <SignUpText>Criar sua conta agora</SignUpText>
                 </SignUpLink>
                 
