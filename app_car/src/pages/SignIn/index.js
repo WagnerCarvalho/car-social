@@ -1,11 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Platform } from 'react-native'
 import { Background, Container, AreaInput, Input, Logo, SubmitButton, SubmitText, SignUpLink, SignUpText } from './styles'
+import AsyncStorage from '@react-native-community/async-storage';
 
-function SignIn( {navigation} ) {
+function SignIn({navigation}) {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [loginUser, setLoginUser] = useState('')
+    
+    function checkLogin() {
+        setLoginUser('yes')
+        navigation.navigate('Profile')
+    }
+
+    useEffect(()=>{
+        async function saveStorage() {
+            await AsyncStorage.setItem('logged', loginUser)
+        }
+    
+        saveStorage()
+    
+    }, [loginUser])
 
     return(
         <Background>
@@ -34,7 +50,7 @@ function SignIn( {navigation} ) {
                     />
                 </AreaInput>
 
-                <SubmitButton onPress={()=>{}}>
+                <SubmitButton onPress={checkLogin}>
                     <SubmitText>Acessar</SubmitText>
                 </SubmitButton>
 
