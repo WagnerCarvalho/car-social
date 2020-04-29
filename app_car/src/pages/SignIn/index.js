@@ -41,7 +41,7 @@ function SignIn({navigation}) {
 
                 <AreaInput>
                     <Input
-                        placeholder="Password"
+                        placeholder="Senha"
                         autoCorrect={false}
                         autoCapitalize="none"
                         value={password}

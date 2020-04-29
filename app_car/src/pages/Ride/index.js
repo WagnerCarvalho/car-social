@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 function Ride({navigation}) {
 
@@ -8,7 +9,7 @@ function Ride({navigation}) {
     }
 
     return(
-        <View>
+        <View style={styles.container}>
             <Text>Ride</Text>
             <TouchableOpacity onPress={backScreen}>
                 <Text>voltar</Text>
@@ -17,4 +18,19 @@ function Ride({navigation}) {
     )
 }
 
+Ride.navigationOptions = {
+    tabBarLabel: 'Viagem',
+    tabBarIcon: ({tintColor}) => (
+        <Icon name="navigation" size={40} color={tintColor}/>
+    )
+}
+
 export default Ride
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+})

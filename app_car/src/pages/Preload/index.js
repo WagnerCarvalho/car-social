@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text } from 'react-native'
+import { ActivityIndicator } from 'react-native'
 import AsyncStorage from '@react-native-community/async-storage'
+import { Background, Container } from './styles'
 
 function Preload({navigation}) {
     
@@ -19,9 +20,11 @@ function Preload({navigation}) {
     },[])
 
     return(
-        <View>
-            <Text>Preload</Text>
-        </View>
+        <Background>
+            <Container>
+                <ActivityIndicator color="#FFF" size={50} />
+            </Container>
+        </Background>
     )
 }
 
