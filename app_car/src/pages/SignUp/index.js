@@ -7,6 +7,8 @@ function SignUp( {navigation} ) {
     const [email, setEmail] = useState('')
     const [nome, setNome] = useState('')
     const [phone, setPhone] = useState('')
+    const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
 
     return(
         <Background>
@@ -42,6 +44,28 @@ function SignUp( {navigation} ) {
                         value={phone}
                         onChangeText={(phone)=> setPhone(phone)}
                         keyboardType="numeric"
+                    />
+                </AreaInput>
+
+                <AreaInput>
+                    <Input
+                        placeholder="Senha"
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        value={password}
+                        secureTextEntry={true}
+                        onChangeText={(password)=> setPassword(password)}
+                    />
+                </AreaInput>
+
+                <AreaInput>
+                    <Input
+                        placeholder="Confirme a senha"
+                        autoCorrect={false}
+                        autoCapitalize="none"
+                        value={confirmPassword}
+                        secureTextEntry={true}
+                        onChangeText={(confirmPassword)=> setConfirmPassword(confirmPassword)}
                     />
                 </AreaInput>
 

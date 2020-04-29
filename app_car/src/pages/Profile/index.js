@@ -1,5 +1,6 @@
 import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 function Profile({navigation}) {
 
@@ -8,7 +9,7 @@ function Profile({navigation}) {
     }
 
     return(
-        <View>
+        <View style={styles.container}>
             <Text>Profile</Text>
             <TouchableOpacity onPress={backScreen}>
                 <Text>voltar</Text>
@@ -17,4 +18,19 @@ function Profile({navigation}) {
     )
 }
 
+Profile.navigationOptions = {
+    tabBarLabel: 'Perfil',
+    tabBarIcon: ({tintColor}) => (
+        <Icon name="account-box" size={40} color={tintColor}/>
+    )
+}
+
 export default Profile
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    }
+})

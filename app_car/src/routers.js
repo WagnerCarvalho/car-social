@@ -21,6 +21,7 @@ const Routes = createAppContainer(
                 Ride
             }, {
                 tabBarOptions: {
+                    showLabel: false,
                     activeTintColor: '#fff',
                     style: {
                         backgroundColor: '#330066'
