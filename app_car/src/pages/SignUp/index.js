@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Platform } from 'react-native'
+import { Platform, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { Background, Container, AreaInput, Input, SubmitButton, SubmitText, SignUpText, SignInButton, SignInText } from './styles'
 
 function SignUp( {navigation} ) {
@@ -11,74 +11,77 @@ function SignUp( {navigation} ) {
     const [confirmPassword, setConfirmPassword] = useState('')
 
     return(
-        <Background>
-            <Container behavior={Platform.OS === 'ios' ? 'padding': ''} enabled>
+        <TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
+            <Background>
+                <Container behavior={Platform.OS === 'ios' ? 'padding': ''} enabled>
 
-                <SignUpText>Cadastro</SignUpText>
+                    <SignUpText>Cadastro</SignUpText>
 
-                <AreaInput>
-                    <Input
-                        placeholder="Email"
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        value={email}
-                        onChangeText={(email)=> setEmail(email)}
-                    />
-                </AreaInput>
+                    <AreaInput>
+                        <Input
+                            placeholder="Email"
+                            autoCorrect={false}
+                            autoCapitalize="none"
+                            value={email}
+                            onChangeText={(email)=> setEmail(email)}
+                        />
+                    </AreaInput>
 
-                <AreaInput>
-                    <Input
-                        placeholder="Nome"
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        value={nome}
-                        onChangeText={(nome)=> setNome(nome)}
-                    />
-                </AreaInput>
+                    <AreaInput>
+                        <Input
+                            placeholder="Nome"
+                            autoCorrect={false}
+                            autoCapitalize="none"
+                            value={nome}
+                            onChangeText={(nome)=> setNome(nome)}
+                        />
+                    </AreaInput>
 
-                <AreaInput>
-                    <Input
-                        placeholder="Número do Telefone"
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        value={phone}
-                        onChangeText={(phone)=> setPhone(phone)}
-                        keyboardType="numeric"
-                    />
-                </AreaInput>
+                    <AreaInput>
+                        <Input
+                            placeholder="Número do Telefone"
+                            autoCorrect={false}
+                            autoCapitalize="none"
+                            value={phone}
+                            onChangeText={(phone)=> setPhone(phone)}
+                            keyboardType="numeric"
+                        />
+                    </AreaInput>
 
-                <AreaInput>
-                    <Input
-                        placeholder="Senha"
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        value={password}
-                        secureTextEntry={true}
-                        onChangeText={(password)=> setPassword(password)}
-                    />
-                </AreaInput>
+                    <AreaInput>
+                        <Input
+                            placeholder="Senha"
+                            autoCorrect={false}
+                            autoCapitalize="none"
+                            value={password}
+                            secureTextEntry={true}
+                            onChangeText={(password)=> setPassword(password)}
+                        />
+                    </AreaInput>
 
-                <AreaInput>
-                    <Input
-                        placeholder="Confirme a senha"
-                        autoCorrect={false}
-                        autoCapitalize="none"
-                        value={confirmPassword}
-                        secureTextEntry={true}
-                        onChangeText={(confirmPassword)=> setConfirmPassword(confirmPassword)}
-                    />
-                </AreaInput>
+                    <AreaInput>
+                        <Input
+                            placeholder="Confirme a senha"
+                            autoCorrect={false}
+                            autoCapitalize="none"
+                            value={confirmPassword}
+                            secureTextEntry={true}
+                            onChangeText={(confirmPassword)=> setConfirmPassword(confirmPassword)}
+                        />
+                    </AreaInput>
 
-                <SubmitButton onPress={()=>{}}>
-                    <SubmitText>Cadastrar</SubmitText>
-                </SubmitButton>
+                    <SubmitButton onPress={()=>{}}>
+                        <SubmitText>Cadastrar</SubmitText>
+                    </SubmitButton>
 
-                <SignInButton onPress={(navigate)=> navigation.navigate('SignIn') }>
-                    <SignInText>Já tenho conta!!!</SignInText>
-                </SignInButton>
+                    <SignInButton onPress={(navigate)=> navigation.navigate('SignIn') }>
+                        <SignInText>Já tenho conta!!!</SignInText>
+                    </SignInButton>
 
-            </Container>
-        </Background>
+                </Container>
+            </Background>
+        </TouchableWithoutFeedback>
+
     )
 }
 
