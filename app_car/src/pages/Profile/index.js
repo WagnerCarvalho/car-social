@@ -1,9 +1,14 @@
-import React from 'react'
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
+import React, {useState} from 'react'
+import { SafeAreaView, TouchableOpacity, Text } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-Icon.loadFont();
+import { Background, Container, ImageProfile, Logout, TextButton } from './styles'
+import ContentProfile from '../../components/ContentProfile'
 
+
+Icon.loadFont();
 function Profile({navigation}) {
+    let dataProfile = {"name": "Wagner Silva de Carvalho", "email": "wcarvalhoti@gmail.com", "phone": "11979902959"}
+    const [profile, setProfile] = useState(dataProfile)
 
     function backScreen() {
         console.log(navigation.state.params)
@@ -11,12 +16,19 @@ function Profile({navigation}) {
     }
 
     return(
-        <View style={styles.container}>
-            <Text>Profile</Text>
-            <TouchableOpacity onPress={backScreen}>
-                <Text>voltar</Text>
-            </TouchableOpacity>
-        </View>
+        <Background> 
+            <Container>
+                <SafeAreaView style={{alignItems: 'center'}}>   
+                    <Logout>
+                        <TouchableOpacity onPress={backScreen} style={{marginLeft:300}}>
+                            <TextButton>voltar</TextButton>
+                        </TouchableOpacity> 
+                    </Logout>
+                    <ImageProfile source={require('../../assets/midia-social.png')}/>
+                    <ContentProfile data={profile}/>
+                </SafeAreaView>
+            </Container>
+        </Background>
     )
 }
 
@@ -28,11 +40,3 @@ Profile.navigationOptions = {
 }
 
 export default Profile
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    }
-})

@@ -11,10 +11,10 @@ function MarkerCarSocial(chauffeur) {
                         coordinate={items.coords}
                         title={items.title}
                         description={items.description}>
-                        <Image source={items.profile === 'user'? require('../../img/user.png'): require('../../img/car.png')} style={{height:40, width:20}} />
+                        <Image source={items.profile === 'user'? require('../../assets/user.png'): require('../../assets/car.png')} style={{height:40, width:20}} />
                     </Marker>
                 )
-            })}     
+            })}
         </>
     )
 }
