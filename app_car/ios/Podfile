@@ -79,6 +79,11 @@ target 'app_car' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-google-maps', :path => '../node_modules/react-native-maps'
+  pod 'GoogleMaps'
+  pod 'Google-Maps-iOS-Utils'
+
+
   target 'app_carTests' do
     inherit! :complete
     # Pods for testing
