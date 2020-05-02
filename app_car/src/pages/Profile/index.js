@@ -6,6 +6,7 @@ Icon.loadFont();
 function Profile({navigation}) {
 
     function backScreen() {
+        console.log(navigation.state.params)
         navigation.navigate('SignIn')
     }
 

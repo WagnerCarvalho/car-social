@@ -9,8 +9,8 @@ function SignIn({navigation}) {
     const [password, setPassword] = useState('')
     const [loginUser, setLoginUser] = useState('')
     
-    function checkLogin() {
-        setLoginUser('yes')
+    async function checkLogin() {
+        await setLoginUser('yes')
         navigation.navigate('Profile')
     }
 
@@ -18,7 +18,6 @@ function SignIn({navigation}) {
         async function saveStorage() {
             await AsyncStorage.setItem('logged', loginUser)
         }
-    
         saveStorage()
     
     }, [loginUser])

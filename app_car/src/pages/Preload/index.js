@@ -7,16 +7,15 @@ function Preload({navigation}) {
     
     useEffect(()=>{
         async function getStorege() {
-            const logged = await AsyncStorage.getItem('logged')
-            if (logged === null) {
-                navigation.navigate({routeName: 'SignIn'})
-            }else{
-                navigation.navigate('Profile')
-            }
+            await AsyncStorage.getItem('logged').then((logged)=>{
+                if (logged === 'yes') {
+                    navigation.navigate('Profile')
+                }else{
+                    navigation.navigate({routeName: 'SignIn'})
+                }
+            })
         }
-    
         getStorege()
-    
     },[])
 
     return(
