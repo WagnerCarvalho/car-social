@@ -23,19 +23,14 @@ function SignUp( {navigation} ) {
 
     async function apiCall(payload) {
         await api.post('users/v1', payload)
-        .then((res)=>{
-            console.log('Axios data:',res.data)
-            saveStorage()
-            navigation.navigate('Profile')
-        })
-        .catch((err)=>{
-            alert(err)
-            alert("Por favor, tente novamente!!!")
-        })
+        .then((res)=>{ saveStorage(res.data)})
+        .catch((err)=>{ alert("Por favor, tente novamente!!!")})
     }
 
-    async function saveStorage() {
+    async function saveStorage(data) {
         await AsyncStorage.setItem('logged', 'yes')
+        await AsyncStorage.setItem('profile', JSON.stringify(data))
+        await navigation.navigate('Profile', { json: data })
     }
 
     return(
