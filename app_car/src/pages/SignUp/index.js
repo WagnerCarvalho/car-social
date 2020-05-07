@@ -1,14 +1,37 @@
 import React, { useState } from 'react'
 import { Platform, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { Background, Container, AreaInput, Input, SubmitButton, SubmitText, SignUpText, SignInButton, SignInText } from './styles'
+import AsyncStorage from '@react-native-community/async-storage';
+
+import api from '../../services/apis' 
+import dataIsOk from '../../components/Validate'
 
 function SignUp( {navigation} ) {
 
     const [email, setEmail] = useState('')
-    const [nome, setNome] = useState('')
+    const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
+
+    function userRegister() {
+        let payload = {name: name, email: email , telephone: phone, password: password, confirmPassword: confirmPassword}
+        if (dataIsOk(payload)) { 
+            apiCall(payload)
+        }
+    }
+
+    async function apiCall(payload) {
+        await api.post('users/v1', payload)
+        .then((res)=>{ saveStorage(res.data)})
+        .catch((err)=>{ alert("Por favor, tente novamente!!!")})
+    }
+
+    async function saveStorage(data) {
+        await AsyncStorage.setItem('logged', 'yes')
+        await AsyncStorage.setItem('profile', JSON.stringify(data))
+        await navigation.navigate('Profile', { json: data })
+    }
 
     return(
         <TouchableWithoutFeedback onPress={ () => Keyboard.dismiss()}>
@@ -32,8 +55,8 @@ function SignUp( {navigation} ) {
                             placeholder="Nome"
                             autoCorrect={false}
                             autoCapitalize="none"
-                            value={nome}
-                            onChangeText={(nome)=> setNome(nome)}
+                            value={name}
+                            onChangeText={(name)=> setName(name)}
                         />
                     </AreaInput>
 
@@ -70,7 +93,7 @@ function SignUp( {navigation} ) {
                         />
                     </AreaInput>
 
-                    <SubmitButton onPress={()=>{}}>
+                    <SubmitButton onPress={userRegister}>
                         <SubmitText>Cadastrar</SubmitText>
                     </SubmitButton>
 
