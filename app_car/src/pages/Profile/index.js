@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { SafeAreaView, TouchableOpacity } from 'react-native'
+import { SafeAreaView, TouchableOpacity, ActivityIndicator } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Background, Container, ImageProfile, Logout, TextButton } from './styles'
 import ContentProfile from '../../components/ContentProfile'
@@ -26,6 +26,7 @@ function Profile({navigation}) {
     return(
         <Background> 
             <Container>
+                <ActivityIndicator color="#FFF" size={50} />
                 <SafeAreaView style={{alignItems: 'center'}}>   
                     <Logout>
                         <TouchableOpacity onPress={backScreen} style={{marginLeft:300}}>

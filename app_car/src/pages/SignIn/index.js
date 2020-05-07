@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Platform, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { Background, Container, AreaInput, Input, Logo, SubmitButton, SubmitText, SignUpLink, SignUpText } from './styles'
 import AsyncStorage from '@react-native-community/async-storage';
+import firebase from '../../services/firebaseConections'
 
 function SignIn({navigation}) {
 
@@ -9,9 +10,16 @@ function SignIn({navigation}) {
     const [password, setPassword] = useState('')
     const [loginUser, setLoginUser] = useState('')
     
-    async function checkLogin() {
-        await setLoginUser('yes')
-        navigation.navigate('Profile')
+    async function authIn() {
+        await firebase.auth().signOut();
+        await firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(()=>{
+            setLoginUser('yes')
+            navigation.navigate('Profile')
+        })
+        .catch((error)=>{
+            alert(error.code)
+        })
     }
 
     useEffect(()=>{
@@ -19,7 +27,6 @@ function SignIn({navigation}) {
             await AsyncStorage.setItem('logged', loginUser)
         }
         saveStorage()
-    
     }, [loginUser])
 
     return(
@@ -50,7 +57,7 @@ function SignIn({navigation}) {
                         />
                     </AreaInput>
 
-                    <SubmitButton onPress={checkLogin}>
+                    <SubmitButton onPress={authIn}>
                         <SubmitText>Acessar</SubmitText>
                     </SubmitButton>
 
