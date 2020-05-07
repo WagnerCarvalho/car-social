@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Platform, TouchableWithoutFeedback, Keyboard } from 'react-native'
 import { Background, Container, AreaInput, Input, SubmitButton, SubmitText, SignUpText, SignInButton, SignInText } from './styles'
 import AsyncStorage from '@react-native-community/async-storage';
+import firebase from '../../services/firebaseConections'
 
 import api from '../../services/apis' 
 import dataIsOk from '../../components/Validate'
@@ -14,17 +15,24 @@ function SignUp( {navigation} ) {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
 
+    firebase.auth().signOut();
+
     function userRegister() {
         let payload = {name: name, email: email , telephone: phone, password: password, confirmPassword: confirmPassword}
-        if (dataIsOk(payload)) { 
-            apiCall(payload)
+        if (dataIsOk(payload)) {
+            createAuth(payload) 
         }
+    }
+
+    async function createAuth(payload) {
+        await firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then(()=>{ apiCall(payload) })
+        .catch((error)=>{alert(error)})
     }
 
     async function apiCall(payload) {
         await api.post('users/v1', payload)
         .then((res)=>{ saveStorage(res.data)})
-        .catch((err)=>{ alert("Por favor, tente novamente!!!")})
     }
 
     async function saveStorage(data) {
