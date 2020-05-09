@@ -33,9 +33,12 @@ function SignUp( {navigation} ) {
     async function apiCall(payload) {
         await api.post('users/v1', payload)
         .then((res)=>{ saveStorage(res.data)})
+        .catch((error)=>{alert(error)})
     }
 
     async function saveStorage(data) {
+        console.log('aqui')
+        console.log(data)
         await AsyncStorage.setItem('logged', 'yes')
         await AsyncStorage.setItem('profile', JSON.stringify(data))
         await navigation.navigate('Profile', { json: data })

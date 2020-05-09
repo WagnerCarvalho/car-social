@@ -10,6 +10,14 @@ function SignIn({navigation}) {
     const [password, setPassword] = useState('')
     const [loginUser, setLoginUser] = useState('')
     
+    function submitLogin() {
+        if (email !== '' && password !== '') {
+            authIn()
+        } else {
+            alert("Informe o email e senha!")
+        }
+    }
+
     async function authIn() {
         await firebase.auth().signOut();
         await firebase.auth().signInWithEmailAndPassword(email, password)
@@ -57,7 +65,7 @@ function SignIn({navigation}) {
                         />
                     </AreaInput>
 
-                    <SubmitButton onPress={authIn}>
+                    <SubmitButton onPress={submitLogin}>
                         <SubmitText>Acessar</SubmitText>
                     </SubmitButton>
 
