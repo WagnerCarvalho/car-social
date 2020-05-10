@@ -35,7 +35,7 @@ Esse repositorio apresenta apenas Frontend para validação dos serviços de bac
 Video com a solução clique [aqui](https://www.youtube.com/watch?v=Qhgt7_dQDqQ)
 
 # APK Android 
-O Arquivo se encontra dentro do projeto https://github.com/WagnerCarvalho/car-social/apk
+O Arquivo se encontra dentro do projeto https://github.com/WagnerCarvalho/car-social/tree/master/apk
 
 # IPA IOS  
 Não foi gerado, pois é necessário pagar $99 por ano para ter licença DEV IOS.
