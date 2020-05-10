@@ -3,22 +3,23 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 import { Background, Container } from './styles'
 import MapRender from '../../components/Map'
 import { PermissionsAndroid, Platform } from 'react-native'
-import Geolocation from '@react-native-community/geolocation';
+import Geolocation from '@react-native-community/geolocation'
 
 Icon.loadFont();
 function Ride() {
     const [hasPermission, setHasPermission] = useState(false)
+    const [coords, setCoords] = useState(null)
 
     async function requestLocation() {
         try {
-           if (Platform.OS === 'android') {
-               const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
-               if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-                   setHasPermission(true)
-               }else{
-                   setHasPermission(true)
-               }
-           } 
+            if (Platform.OS === 'android') {
+                const granted = await PermissionsAndroid.request(PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION)
+                if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+                    setHasPermission(true)
+                }
+            } else{
+                setHasPermission(true)
+            }
         } catch (error) {
             console.warn(error)
         }
@@ -26,20 +27,23 @@ function Ride() {
 
     async function getLocation() {
         await Geolocation.getCurrentPosition(data => {
-            alert(data.coords)
+            setCoords(data.coords)
         })
     }
 
     useEffect(()=>{
-        if (hasPermission) { getLocation() }
         requestLocation()
     },[])
+
+    useEffect(()=>{
+        if (hasPermission) { getLocation() }
+    },[hasPermission])
 
     return(
         <Background>
             <Container>
                 { hasPermission?
-                    ( <MapRender/> ) : null
+                    ( <MapRender data={coords}/> ) : null
                 } 
             </Container>
         </Background>
