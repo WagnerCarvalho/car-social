@@ -27,6 +27,8 @@ function MapRender() {
         <Background>
             <Container>
                 <MapView
+                    showsUserLocation
+                    followsUserLocation
                     provider={PROVIDER_GOOGLE}
                     showsTraffic={true}
                     style={styles.map}

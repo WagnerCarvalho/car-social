@@ -1,6 +1,6 @@
 import React from 'react'
 import { Marker } from 'react-native-maps'
-import { Image, View } from 'react-native'
+import { Image } from 'react-native'
 
 function MarkerCarSocial(chauffeur) {
     return(
