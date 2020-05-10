@@ -1,6 +1,6 @@
 import React from 'react'
 import { Marker } from 'react-native-maps'
-import { Image, View } from 'react-native'
+import { Image } from 'react-native'
 
 function MarkerCarSocial(chauffeur) {
     return(
@@ -8,8 +8,8 @@ function MarkerCarSocial(chauffeur) {
             {chauffeur.data.map((items)=>{
                 return(
                     <Marker
-                        coordinate={items.coords}
-                        title={items.title}
+                        coordinate={{"latitude": parseFloat(items.coords.latitude), "longitude": parseFloat(items.coords.longitude)}}
+                        title={items.name}
                         description={items.description}>
                         <Image source={items.profile === 'user'? require('../../assets/user.png'): require('../../assets/car.png')} style={{height:40, width:20}} />
                     </Marker>
