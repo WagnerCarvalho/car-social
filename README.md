@@ -26,10 +26,10 @@ Será necessário entregar aqui no Portal do Aluno:
 ## Solução:
 Foi desenvolvido um aplicativo para compartilhar caronas por geolocalização.
 
-Esse repositorio apresenta apenas Frontend para validação dos serviços de backend! Pois o percentual maior da nota será sobre os serviços de Backend Rest Full.
+Esse repositorio apresenta apenas Frontend para validação dos serviços de backend! Pois o maior percentual nota será sobre os serviços de Backend Rest Full.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/WagnerCarvalho/fiap-spring/master/.github/navegador.png?token=ABZNZYPSJUDKK3DXODDWOUS6ST6A6" width="700">
+  <img src="https://raw.githubusercontent.com/WagnerCarvalho/car-social/readme/.image/car-social.png?token=ABZNZYJAHQ2CFGDKCTBJIB26YGRUW" width="700">
 </p>
 
 Video com a solução clique [aqui](https://www.youtube.com/watch?v=Qhgt7_dQDqQ)
